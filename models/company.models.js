@@ -4,10 +4,13 @@
 
 const mongoose = require("mongoose");
 const constants = require("../utils/constants");
-const contants = require("../utils/constants");
 
 const companySchema =  new mongoose.Schema({
-    
+
+    /**
+     * name , address , verified , JobPosted ,  createdAt , updatedAt
+     */
+
     name : {
         type : String,
         required : true   
@@ -20,10 +23,14 @@ const companySchema =  new mongoose.Schema({
         required : true
     },
 
-    isVerified : {
+    Verified : {
         type : String,
-        required : true,
-        isVerified : constants.verificationStatus.notVerfied
+        isVerified : constants.verificationStatus.notVerified
+    },
+
+    jobPosted : {
+        type : [mongoose.SchemaTypes.ObjectId],
+        ref : "Job"
     },
 
     createdAt: {
@@ -38,8 +45,7 @@ const companySchema =  new mongoose.Schema({
         type : Date, 
         default: () => {
             return Date.now();
-        }
-        
+        }    
     }
 });
 

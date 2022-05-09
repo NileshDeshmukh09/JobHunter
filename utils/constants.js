@@ -6,18 +6,18 @@ module.exports = {
     
     userTypes : {
         student : "STUDENT",
-        company : "COMPANY",
-        job : "JOB"
+        admin : "ADMIN",
+        recruiter : "RECRUITER"
     },
 
     verificationStatus : {
         verified : "VERIFIED",
-        notVerfied : "NOTVERIFIED"
+        notVerified : "NOT_VERIFIED"
     },
 
     jobStatus : {
         active : "ACTIVE",
         expired : "EXPIRED"
     }
-    
-}
+
+};

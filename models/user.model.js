@@ -32,7 +32,6 @@ const userSchema = new mongoose.Schema({
 
     userType: {
         type: String,
-        required: true,
         default: constants.userTypes.student
     },
 
@@ -50,6 +49,11 @@ const userSchema = new mongoose.Schema({
             return Date.now();
         }
     },
+
+    jobs : {
+        type : [mongoose.SchemaTypes.ObjectId],
+        ref : "Job"
+    }
 
 
 });
