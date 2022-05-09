@@ -19,7 +19,6 @@ const companySchema =  new mongoose.Schema({
     address : {
         type :String,
         minlength : 10,
-        maxlength : 70,
         required : true
     },
 
