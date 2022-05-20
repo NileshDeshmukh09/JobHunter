@@ -22,7 +22,7 @@ const companySchema =  new mongoose.Schema({
         required : true
     },
 
-    Verified : {
+    verified : {
         type : String,
         isVerified : constants.verificationStatus.notVerified
     },
