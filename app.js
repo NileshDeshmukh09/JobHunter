@@ -3,6 +3,7 @@ const mongoose = require("mongoose");
 const dbConfig = require("./configs/db.config");
 const bodyParser = require("body-parser");
 const bcrypt = require("bcryptjs");
+const serverConfig = require("./configs/server.config");
 const User = require("./models/user.model")
 const constants = require("./utils/constants");
 
@@ -25,7 +26,7 @@ require("./routes")(app);
      */
         const user =await User.create({
             name: "Nilesh Deshmukh",
-            userID : constants.userTypes.admin,
+            userId : "admin",
             password : bcrypt.hashSync("welcome123"),
             email : "nileshdeshmukh0908@gmail.com",
             userType : constants.userTypes.admin
@@ -34,6 +35,6 @@ require("./routes")(app);
     
 });
 
-app.use(serverConfig.PORT, ()=>{
+app.listen(serverConfig.PORT, ()=>{
     console.log(`Application has Started on https://localhost:${serverConfig.PORT}`)
 })

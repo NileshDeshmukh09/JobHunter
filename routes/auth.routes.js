@@ -1,6 +1,6 @@
 
 /**
- * This file will act as the route for authentication and authorzation
+ * This file will act as the routes for authentication and authorzation
  * 
  */
 

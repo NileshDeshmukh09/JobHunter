@@ -11,7 +11,7 @@ const config = require("../configs/auth.config");
 async function signup(req, res) {
     const userObjTOBeSortedInDB = {
         name: req.body.name,
-        userID: req.body.userID,
+        userId: req.body.userId,
         email: req.body.email,
         userType: req.body.userType,
         password: bcrypt.hashSync(req.body.password, 8)
@@ -33,7 +33,7 @@ async function signup(req, res) {
 
         const userCreationResponse = {
             name: userCreated.name,
-            userID: userCreated.userID,
+            userId: userCreated.userId,
             email: userCreated.email,
             userType: userCreated.userType,
             userStatus: userCreated.userStatus,
@@ -61,9 +61,9 @@ async function signin(req, res){
 
     //Search the user if it exists 
     try{
-        var user =  await User.findOne({userId : req.body.userId});
+        var user =  await User.findOne({userId : req.body.userId });
         }catch(err){
-            console.log(err.message);
+            console.log(err);
         }
         if(user == null){
            return res.status(400).send({
@@ -82,7 +82,7 @@ async function signin(req, res){
     
         //** Successfull login */
         //I need to generate access token now
-        const token = jwt.sign({id: user.userID}, config.secret,{
+        const token = jwt.sign({id: user.userId}, config.secret,{
             expiresIn : 600
         });
     
@@ -93,7 +93,7 @@ async function signin(req, res){
                 name : user.name,
                 userId : user.userId,
                 email : user.email,
-                userType : user.userTypes,
+                userType : user.userType,
                 accessToken : token
             }
         })
